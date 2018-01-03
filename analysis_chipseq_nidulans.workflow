@@ -122,7 +122,8 @@ file2=GcnE-FLAG_noSrapa_noSiran_H3K9ac_Rep3_26003_ACAGTG_C7U12ANXX_1_20150703B_2
 for file2 in $(ls *mapped.bam);do
 echo $file2 | sed -r 's/_[0-9]{5}_.*//g' >> ${file2}.idxstat; samtools idxstats $file2 | cut -f3 >> ${file2}.idxstat; echo -e "\n" >> ${file2}.idxstat
 done
-echo "Library" >> aa.idxstat; samtools idxstats $file2 | cut -f1 >> aa.idxstat
+echo "Library" >> aa.idxstat; 
+samtools idxstats $file2 | cut -f1 >> aa.idxstat
 paste *.idxstat > Bowtie2_mapping_rates_chipseq_anidulans.csv
 
 
